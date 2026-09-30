@@ -72,14 +72,14 @@
 
     <!-- 1. 開場歡迎儀式遮罩 -->
     <div id="welcomeOverlay" class="fixed inset-0 z-50 bg-[#fdfaf7] flex flex-col items-center justify-center px-4 sm:px-6 transition-opacity duration-800">
-        <div class="text-center max-w-sm sm:max-w-md w-full p-5 sm:p-8 rounded-2xl glass-card shadow-lg border border-[#d4a373]/20 animate-fade-in mx-auto">
+        <div class="text-center max-w-[320px] sm:max-w-md w-full p-6 sm:p-8 rounded-2xl glass-card shadow-lg border border-[#d4a373]/20 animate-fade-in mx-auto overflow-hidden box-border">
             <span class="text-[10px] sm:text-xs uppercase tracking-widest-custom text-[#8da399] font-semibold block mb-1.5 sm:mb-2">Wedding Invitation</span>
-            <h1 class="font-serif text-xl sm:text-3xl md:text-4xl text-[#4a4a4a] mb-2 sm:mb-3 font-semibold leading-snug">Welcome to Our Wedding</h1>
+            <h1 class="font-serif text-lg sm:text-3xl md:text-4xl text-[#4a4a4a] mb-2 sm:mb-3 font-semibold leading-snug break-normal">Welcome to Our Wedding</h1>
             <div class="w-10 sm:w-12 h-[1px] bg-[#d4a373] mx-auto my-3 sm:my-4"></div>
             <p class="font-serif text-base sm:text-xl tracking-wider text-[#4a4a4a] mb-6 sm:mb-8 font-medium">宗翰 &amp; 育璇</p>
-            <button id="openBtn" class="w-full py-3 px-3 sm:px-8 rounded-full bg-[#d4a373] text-white font-medium hover:bg-[#c29262] transition duration-300 shadow-md transform hover:-translate-y-0.5 active:translate-y-0 cursor-pointer flex items-center justify-center space-x-2">
+            <button id="openBtn" class="w-full py-3 px-2 sm:px-6 rounded-full bg-[#d4a373] text-white font-medium hover:bg-[#c29262] transition duration-300 shadow-md transform hover:-translate-y-0.5 active:translate-y-0 cursor-pointer flex items-center justify-center space-x-1 sm:space-x-2 box-border">
                 <span class="text-[#d4a373] bg-white w-5 h-5 sm:w-6 sm:h-6 rounded-full inline-flex items-center justify-center shadow-sm text-xs sm:text-sm flex-shrink-0">♥</span>
-                <span class="text-xs sm:text-sm md:text-base tracking-wider sm:tracking-widest whitespace-nowrap">OPEN INVITATION</span>
+                <span class="text-[11px] xs:text-xs sm:text-sm md:text-base tracking-normal sm:tracking-widest whitespace-nowrap overflow-hidden text-ellipsis">OPEN INVITATION</span>
             </button>
         </div>
     </div>
@@ -141,8 +141,8 @@
             <h3 class="font-serif text-xs sm:text-sm text-[#4a4a4a] mb-3 font-normal opacity-80 tracking-widest">Our Story</h3>
             <div class="w-10 h-[1px] bg-[#d4a373] mx-auto mb-5"></div>
             <p class="font-serif text-sm sm:text-base md:text-lg leading-relaxed text-[#4a4a4a] tracking-wide max-w-lg mx-auto px-2 break-normal">
-                兩顆心的相遇，是漫長歲月中最溫柔的奇蹟。<br class="hidden sm:inline">
-                在這個特別的日子裡，<br class="hidden sm:inline">
+                兩顆心的相遇，是漫長歲月中最溫柔的奇蹟。<br>
+                在這個特別的日子裡，<br>
                 希望邀請最重要的您，來到現場見證我們的重要時刻。
             </p>
         </div>
@@ -232,13 +232,13 @@
                 
                 <!-- 賓客姓名 (始終必填) -->
                 <div>
-                    <label class="block text-xs sm:text-sm font-semibold text-[#4a4a4a] mb-2">您的大名 <span class="text-red-500">*</span></label>
+                    <label class="block text-xs sm:text-sm font-semibold text-[#4a4a4a] mb-2">您的大名 Name <span class="text-red-500">*</span></label>
                     <input type="text" id="guestNameInput" name="entry.1073584736" required class="w-full px-4 py-3 rounded-xl border border-[#d4a373]/30 bg-white/80 focus:outline-none focus:border-[#d4a373] transition text-sm sm:text-base" placeholder="請輸入您的真實姓名">
                 </div>
 
                 <!-- 出席意願 (單選) -->
                 <div>
-                    <label class="block text-xs sm:text-sm font-semibold text-[#4a4a4a] mb-2">出席意願 <span class="text-red-500">*</span></label>
+                    <label class="block text-xs sm:text-sm font-semibold text-[#4a4a4a] mb-2">出席意願 Attendance <span class="text-red-500">*</span></label>
                     <div class="space-y-3">
                         <label class="flex items-center p-3 rounded-xl border border-[#d4a373]/30 bg-white/60 cursor-pointer hover:bg-white transition">
                             <input type="radio" name="entry.432583271" value="參加" required onchange="handleAttendanceChange()" class="text-[#d4a373] focus:ring-[#d4a373]">
@@ -256,7 +256,7 @@
                     
                     <!-- 與新人關係 -->
                     <div>
-                        <label class="block text-xs sm:text-sm font-semibold text-[#4a4a4a] mb-2">與新人關係 <span id="relationStar" class="text-red-500">*</span></label>
+                        <label class="block text-xs sm:text-sm font-semibold text-[#4a4a4a] mb-2">與新人關係 Relationship <span id="relationStar" class="text-red-500">*</span></label>
                         <select id="relationSelect" name="entry.1645054225" class="w-full px-4 py-3 rounded-xl border border-[#d4a373]/30 bg-white/80 focus:outline-none focus:border-[#d4a373] transition text-sm sm:text-base">
                             <option value="">請選擇與新人的關係</option>
                             <option value="新郎親戚">新郎親戚</option>
@@ -270,20 +270,20 @@
 
                     <!-- 出席總人數 -->
                     <div>
-                        <label class="block text-xs sm:text-sm font-semibold text-[#4a4a4a] mb-2">出席總人數 <span id="countStar" class="text-red-500">*</span></label>
+                        <label class="block text-xs sm:text-sm font-semibold text-[#4a4a4a] mb-2">出席總人數 Number of Attendees <span id="countStar" class="text-red-500">*</span></label>
                         <input type="number" id="totalCount" name="entry.1415064295" min="0" max="10" value="1" oninput="handleCountChange()" class="w-full px-4 py-3 rounded-xl border border-[#d4a373]/30 bg-white/80 focus:outline-none focus:border-[#d4a373] transition text-sm sm:text-base">
                     </div>
 
                     <!-- 飲食需求（動態顯示數量與選項） -->
                     <div id="dietarySection" class="p-4 rounded-xl bg-white/40 border border-[#d4a373]/20 space-y-3">
-                        <label class="block text-xs sm:text-sm font-semibold text-[#4a4a4a]">飲食需求數量登記</label>
+                        <label class="block text-xs sm:text-sm font-semibold text-[#4a4a4a]">飲食需求數量登記 Dietary Requirements</label>
                         <div class="grid grid-cols-2 gap-4">
                             <div>
-                                <label class="block text-xs text-[#4a4a4a]/80 mb-1">葷食人數</label>
+                                <label class="block text-xs text-[#4a4a4a]/80 mb-1">葷食人數 Meat</label>
                                 <input type="number" id="meatCount" min="0" value="1" oninput="updateDietaryString()" class="w-full px-3 py-2 rounded-lg border border-[#d4a373]/30 bg-white text-sm">
                             </div>
                             <div>
-                                <label class="block text-xs text-[#4a4a4a]/80 mb-1">素食人數</label>
+                                <label class="block text-xs text-[#4a4a4a]/80 mb-1">素食人數 Vegetarian</label>
                                 <input type="number" id="vegCount" min="0" value="0" oninput="updateDietaryString()" class="w-full px-3 py-2 rounded-lg border border-[#d4a373]/30 bg-white text-sm">
                             </div>
                         </div>
@@ -291,13 +291,13 @@
 
                     <!-- 兒童座椅需求（動態顯示數量） -->
                     <div id="chairSection" class="p-4 rounded-xl bg-white/40 border border-[#d4a373]/20 space-y-2">
-                        <label class="block text-xs sm:text-sm font-semibold text-[#4a4a4a]">兒童座椅需求數量</label>
+                        <label class="block text-xs sm:text-sm font-semibold text-[#4a4a4a]">兒童座椅需求數量 Children's Chair</label>
                         <input type="number" id="chairCountInput" min="0" max="5" value="0" oninput="updateChairString()" class="w-full px-3 py-2 rounded-lg border border-[#d4a373]/30 bg-white text-sm">
                     </div>
 
                     <!-- 喜帖需求 -->
                     <div>
-                        <label class="block text-xs sm:text-sm font-semibold text-[#4a4a4a] mb-2">喜帖需求 <span id="inviteStar" class="text-red-500">*</span></label>
+                        <label class="block text-xs sm:text-sm font-semibold text-[#4a4a4a] mb-2">喜帖需求 Invitation Preference <span id="inviteStar" class="text-red-500">*</span></label>
                         <select id="inviteSelect" name="entry.774592507" class="w-full px-4 py-3 rounded-xl border border-[#d4a373]/30 bg-white/80 focus:outline-none focus:border-[#d4a373] transition text-sm sm:text-base">
                             <option value="">請選擇喜帖需求</option>
                             <option value="要，請給我紙本喜帖">要，請給我紙本喜帖</option>
@@ -308,20 +308,20 @@
 
                 </div>
 
-                <!-- 隱藏欄位：葷食與兒童椅對接 -->
+                <!-- 隱藏欄位：嚴格對接 Google Form 實際 Entry ID -->
                 <input type="hidden" id="final_entry_dietary" name="entry.791934032" value="葷食1位">
                 <input type="hidden" id="final_entry_chair" name="entry.818617860" value="不需要">
 
                 <!-- 祝福語/悄悄話（無論參加與否皆顯示） -->
                 <div>
-                    <label class="block text-xs sm:text-sm font-semibold text-[#4a4a4a] mb-2">寫下對我們的祝福、回憶或悄悄話</label>
-                    <textarea name="entry.1787869984" rows="4" class="w-full px-4 py-3 rounded-xl border border-[#d4a373]/30 bg-white/80 focus:outline-none focus:border-[#d4a373] transition text-sm sm:text-base" placeholder="留下您溫暖的祝福給新人..."></textarea>
+                    <label class="block text-xs sm:text-sm font-semibold text-[#4a4a4a] mb-2">寫下對我們的祝福、回憶或悄悄話 <span class="font-semibold text-[#4a4a4a]">Message</span></label>
+                    <textarea name="entry.1787869984" rows="4" class="w-full px-4 py-3 rounded-xl border border-[#d4a373]/30 bg-white/80 focus:outline-none focus:border-[#d4a373] transition text-sm sm:text-base font-normal" placeholder="想對宗翰＆育璇說的話"></textarea>
                 </div>
 
                 <!-- 送出按鈕 -->
                 <div>
                     <button type="submit" class="w-full py-3.5 sm:py-4 rounded-xl bg-[#d4a373] text-white font-semibold tracking-wider hover:bg-[#c29262] transition duration-300 shadow-md cursor-pointer text-sm sm:text-base">
-                        送出出席回函
+                        送出出席回函 Submit RSVP
                     </button>
                 </div>
 
@@ -353,7 +353,7 @@
         <source src="music.mp3" type="audio/mpeg">
     </audio>
 
-    <!-- JavaScript 互動與防錯邏輯 -->
+    <!-- JavaScript 互動與表單對接精準邏輯 -->
     <script>
         let isMusicPlaying = false;
         let isSubmitting = false;
@@ -454,7 +454,9 @@
                 relationStar.style.display = 'inline';
                 countStar.style.display = 'inline';
                 inviteStar.style.display = 'inline';
-                totalCount.value = "1";
+                if (!totalCount.value || totalCount.value === "0") {
+                    totalCount.value = "1";
+                }
                 updateDietaryString();
                 updateChairString();
             } else {
@@ -477,25 +479,27 @@
         function handleCountChange() {
             const total = parseInt(document.getElementById('totalCount').value) || 0;
             const meatCount = document.getElementById('meatCount');
-            if (parseInt(meatCount.value) + parseInt(document.getElementById('vegCount').value) !== total) {
+            const vegCount = document.getElementById('vegCount');
+            
+            if (parseInt(meatCount.value) + parseInt(vegCount.value) !== total) {
                 meatCount.value = total;
-                document.getElementById('vegCount').value = 0;
+                vegCount.value = 0;
             }
             updateDietaryString();
         }
 
         function updateDietaryString() {
-            const meat = document.getElementById('meatCount').value || 0;
-            const veg = document.getElementById('vegCount').value || 0;
+            const meat = parseInt(document.getElementById('meatCount').value) || 0;
+            const veg = parseInt(document.getElementById('vegCount').value) || 0;
             let result = [];
-            if (parseInt(meat) > 0) result.push(`葷食${meat}位`);
-            if (parseInt(veg) > 0) result.push(`素食${veg}位`);
+            if (meat > 0) result.push(`葷食${meat}位`);
+            if (veg > 0) result.push(`素食${veg}位`);
             document.getElementById('final_entry_dietary').value = result.join('，') || '無特別需求';
         }
 
         function updateChairString() {
-            const chairs = document.getElementById('chairCountInput').value || 0;
-            if (parseInt(chairs) > 0) {
+            const chairs = parseInt(document.getElementById('chairCountInput').value) || 0;
+            if (chairs > 0) {
                 document.getElementById('final_entry_chair').value = `需要，${chairs}張`;
             } else {
                 document.getElementById('final_entry_chair').value = '不需要';
