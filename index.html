@@ -530,3 +530,35 @@
 
             return true;
         }
+
+        function handleIframeLoad() {
+            if (isSubmitting) {
+                showSuccessModal();
+                isSubmitting = false;
+            }
+        }
+
+        function showSuccessModal() {
+            document.getElementById('successModal').classList.remove('hidden');
+            document.getElementById('rsvpForm').reset();
+            handleAttendanceChange();
+        }
+
+        function closeSuccessModal() {
+            document.getElementById('successModal').classList.add('hidden');
+        }
+
+        // 定義 handleIframeLoad 函數以修復 ReferenceError
+        function handleIframeLoad() {
+            if (isSubmitting) {
+                showSuccessModal();
+                isSubmitting = false;
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            handleAttendanceChange();
+        });
+    </script>
+</body>
+</html>
