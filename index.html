@@ -71,15 +71,15 @@
 <body class="overflow-hidden selection:bg-[#d4a373] selection:text-white">
 
     <!-- 1. 開場歡迎儀式遮罩 -->
-    <div id="welcomeOverlay" class="fixed inset-0 z-50 bg-[#fdfaf7] flex flex-col items-center justify-center px-4 sm:px-6 transition-opacity duration-800">
-        <div class="text-center max-w-[320px] sm:max-w-md w-full p-6 sm:p-8 rounded-2xl glass-card shadow-lg border border-[#d4a373]/20 animate-fade-in mx-auto overflow-hidden box-border">
+    <div id="welcomeOverlay" class="fixed inset-0 z-50 bg-[#fdfaf7] flex flex-col items-center justify-center px-4 transition-opacity duration-800">
+        <div class="text-center max-w-[340px] sm:max-w-md w-full p-6 sm:p-8 rounded-2xl glass-card shadow-lg border border-[#d4a373]/20 mx-auto">
             <span class="text-[10px] sm:text-xs uppercase tracking-widest-custom text-[#8da399] font-semibold block mb-1.5 sm:mb-2">Wedding Invitation</span>
             <h1 class="font-serif text-lg sm:text-3xl md:text-4xl text-[#4a4a4a] mb-2 sm:mb-3 font-semibold leading-snug break-normal">Welcome to Our Wedding</h1>
             <div class="w-10 sm:w-12 h-[1px] bg-[#d4a373] mx-auto my-3 sm:my-4"></div>
             <p class="font-serif text-base sm:text-xl tracking-wider text-[#4a4a4a] mb-6 sm:mb-8 font-medium">宗翰 &amp; 育璇</p>
-            <button id="openBtn" class="w-full py-3 px-3 sm:px-6 rounded-full bg-[#d4a373] text-white font-medium hover:bg-[#c29262] transition duration-300 shadow-md transform hover:-translate-y-0.5 active:translate-y-0 cursor-pointer flex items-center justify-center space-x-1 sm:space-x-2 box-border">
+            <button id="openBtn" class="w-full py-3.5 px-4 rounded-full bg-[#d4a373] text-white font-medium hover:bg-[#c29262] transition duration-300 shadow-md transform hover:-translate-y-0.5 active:translate-y-0 cursor-pointer flex items-center justify-center space-x-2 box-border">
                 <span class="text-[#d4a373] bg-white w-5 h-5 sm:w-6 sm:h-6 rounded-full inline-flex items-center justify-center shadow-sm text-xs sm:text-sm flex-shrink-0">♥</span>
-                <span class="text-[10px] xs:text-[11px] sm:text-sm md:text-base font-medium tracking-normal whitespace-nowrap overflow-hidden">OPEN INVITATION</span>
+                <span class="text-xs sm:text-sm md:text-base font-medium tracking-normal whitespace-nowrap overflow-visible">OPEN INVITATION</span>
             </button>
         </div>
     </div>
@@ -106,7 +106,7 @@
 
     <!-- 3. 主視覺與照片輪播區 -->
     <section id="hero" class="pt-24 sm:pt-28 pb-12 sm:pb-16 px-4 max-w-4xl mx-auto flex flex-col items-center text-center">
-        <!-- 照片外框輪播 (更新為指定的 9 張婚紗照連結) -->
+        <!-- 照片外框輪播 (9張婚紗照連結) -->
         <div class="w-full max-w-[280px] sm:max-w-md aspect-[3/4] md:aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl relative mb-6 sm:mb-8 border-4 border-white glass-card">
             <div id="carouselContainer" class="w-full h-full relative">
                 <img src="https://i.postimg.cc/263380Hd/DSC00012.jpg" class="carousel-img absolute inset-0 w-full h-full object-cover opacity-100 transition-opacity duration-1000" alt="婚紗照 1" onerror="this.src='https://placehold.co/600x800/d4a373/ffffff?text=Wedding+Photo+1'">
@@ -145,7 +145,7 @@
             <span class="text-xs uppercase tracking-widest-custom text-[#8da399] font-semibold block mb-1">About Us</span>
             <h3 class="font-serif text-xs sm:text-sm text-[#4a4a4a] mb-3 font-normal opacity-80 tracking-widest">Our Story</h3>
             <div class="w-10 h-[1px] bg-[#d4a373] mx-auto mb-5"></div>
-            <p class="font-serif text-sm sm:text-base md:text-lg leading-relaxed text-[#4a4a4a] tracking-wide max-w-lg mx-auto px-2 break-normal">
+            <p class="font-serif text-sm sm:text-base md:text-lg leading-relaxed text-[#4a4a4a] tracking-wide max-w-lg mx-auto px-2 break-normal" style="word-break: keep-all; overflow-wrap: break-word;">
                 兩顆心的相遇，是漫長歲月中最溫柔的奇蹟。<br>
                 在這個特別的日子裡，<br>
                 希望邀請最重要的您，來到現場見證我們的重要時刻。
@@ -153,7 +153,7 @@
         </div>
     </section>
 
-    <!-- 5. 婚禮詳情 (Details & Accordion) -->
+    <!-- 5. 婚禮詳情 -->
     <section id="details" class="py-12 sm:py-16 px-4 max-w-5xl mx-auto">
         <div class="text-center mb-10">
             <span class="text-xs uppercase tracking-widest-custom text-[#8da399] font-semibold">Information</span>
@@ -199,7 +199,7 @@
             </div>
         </div>
 
-        <!-- 交通指引 摺疊式面板 (Accordion) -->
+        <!-- 交通指引 摺疊式面板 -->
         <div class="mt-6 glass-card rounded-3xl shadow-sm border border-[#d4a373]/15 overflow-hidden">
             <button onclick="toggleAccordion('trafficAccordion', 'trafficIcon')" class="w-full p-5 sm:p-6 text-left flex items-center justify-between focus:outline-none hover:bg-black/5 transition">
                 <div class="flex items-center space-x-3">
@@ -230,18 +230,18 @@
         </div>
 
         <div class="glass-card p-5 sm:p-8 md:p-10 rounded-3xl shadow-sm border border-[#d4a373]/15">
-            <!-- 隱藏式 Form 用於提交至 Google Forms -->
+            <!-- 隱藏式 Form 用於精準提交至 Google Forms -->
             <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="handleIframeLoad()"></iframe>
 
             <form id="rsvpForm" action="https://docs.google.com/forms/d/e/1FAIpQLSe8hAekn9ZuTL4116iYravUsTJdIOr7J7lZHfSLjdAvKwCTMA/formResponse" method="POST" target="hidden_iframe" onsubmit="return handleFormSubmit(event);" class="space-y-6">
                 
-                <!-- 賓客姓名 (始終必填) -->
+                <!-- 賓客姓名 -->
                 <div>
                     <label class="block text-xs sm:text-sm font-semibold text-[#4a4a4a] mb-2">您的大名 Name <span class="text-red-500">*</span></label>
                     <input type="text" id="guestNameInput" name="entry.1073584736" required class="w-full px-4 py-3 rounded-xl border border-[#d4a373]/30 bg-white/80 focus:outline-none focus:border-[#d4a373] transition text-sm sm:text-base" placeholder="請輸入您的真實姓名">
                 </div>
 
-                <!-- 出席意願 (單選) -->
+                <!-- 出席意願 -->
                 <div>
                     <label class="block text-xs sm:text-sm font-semibold text-[#4a4a4a] mb-2">出席意願 Attendance <span class="text-red-500">*</span></label>
                     <div class="space-y-3">
@@ -283,18 +283,18 @@
                     <div id="dietarySection" class="p-4 rounded-xl bg-white/40 border border-[#d4a373]/20 space-y-3">
                         <label class="block text-xs sm:text-sm font-semibold text-[#4a4a4a]">飲食需求 Dietary Requirements</label>
                         <div class="grid grid-cols-2 gap-3 sm:gap-4">
-                            <div>
-                                <label class="block text-xs text-[#4a4a4a]/80 mb-1">葷食</label>
-                                <input type="number" id="meatCount" min="0" value="1" oninput="updateDietaryString()" class="w-full px-3 py-2 rounded-lg border border-[#d4a373]/30 bg-white text-sm">
+                            <div class="min-w-0">
+                                <label class="block text-[11px] sm:text-xs text-[#4a4a4a]/80 mb-1 truncate">葷食</label>
+                                <input type="number" id="meatCount" min="0" value="1" oninput="updateDietaryString()" class="w-full px-2 sm:px-3 py-2 rounded-lg border border-[#d4a373]/30 bg-white text-sm">
                             </div>
-                            <div>
-                                <label class="block text-xs text-[#4a4a4a]/80 mb-1">素食</label>
-                                <input type="number" id="vegCount" min="0" value="0" oninput="updateDietaryString()" class="w-full px-3 py-2 rounded-lg border border-[#d4a373]/30 bg-white text-sm">
+                            <div class="min-w-0">
+                                <label class="block text-[11px] sm:text-xs text-[#4a4a4a]/80 mb-1 truncate">素食</label>
+                                <input type="number" id="vegCount" min="0" value="0" oninput="updateDietaryString()" class="w-full px-2 sm:px-3 py-2 rounded-lg border border-[#d4a373]/30 bg-white text-sm">
                             </div>
                         </div>
                     </div>
 
-                    <!-- 兒童座椅需求（動態顯示數量） -->
+                    <!-- 兒童座椅需求 -->
                     <div id="chairSection" class="p-4 rounded-xl bg-white/40 border border-[#d4a373]/20 space-y-2">
                         <label class="block text-xs sm:text-sm font-semibold text-[#4a4a4a]">兒童座椅需求數量 Children's Chair</label>
                         <input type="number" id="chairCountInput" min="0" max="5" value="0" oninput="updateChairString()" class="w-full px-3 py-2 rounded-lg border border-[#d4a373]/30 bg-white text-sm">
@@ -319,7 +319,7 @@
 
                 <!-- 祝福語/悄悄話 -->
                 <div>
-                    <label class="block text-xs sm:text-sm font-semibold text-[#4a4a4a] mb-2">寫下對我們的祝福、回憶或悄悄話 <span class="font-semibold text-[#4a4a4a]">Message</span></label>
+                    <label class="block text-xs sm:text-sm font-semibold text-[#4a4a4a] mb-2">寫下對我們的祝福、回憶或悄悄話 <span class="text-xs sm:text-sm font-semibold text-[#4a4a4a]/70">Message</span></label>
                     <textarea name="entry.1787869984" rows="4" class="w-full px-4 py-3 rounded-xl border border-[#d4a373]/30 bg-white/80 focus:outline-none focus:border-[#d4a373] transition text-sm sm:text-base font-normal" placeholder="想對宗翰＆育璇說的話"></textarea>
                 </div>
 
@@ -341,28 +341,82 @@
 
     <!-- 成功送出 Modal 彈窗 -->
     <div id="successModal" class="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm hidden flex items-center justify-center p-4">
-        <div class="bg-white max-w-sm w-full p-6 sm:p-8 rounded-3xl text-center shadow-2xl animate-fade-in border border-[#d4a373]/30">
+        <div class="bg-white max-w-sm w-full p-6 sm:p-8 rounded-3xl text-center shadow-2xl border border-[#d4a373]/30">
             <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-[#d4a373]/20 text-[#d4a373] flex items-center justify-center mx-auto mb-4 text-xl sm:text-2xl">
                 <i class="fa-solid fa-heart"></i>
             </div>
             <h4 class="font-serif text-xl sm:text-2xl font-semibold text-[#4a4a4a] mb-2">謝謝您的填寫</h4>
-            <p class="text-xs sm:text-sm text-[#4a4a4a]/80 mb-6 leading-relaxed">謝謝填寫和祝福 ❤️️開心與您分享我們的喜悅 : )</p>
+            <p class="text-xs sm:text-sm text-[#4a4a4a]/80 mb-6 leading-relaxed">謝謝填寫和祝福 ❤開心與您分享我們的喜悅 : )</p>
             <button onclick="closeSuccessModal()" class="w-full py-3 rounded-xl bg-[#d4a373] text-white font-medium tracking-wider hover:bg-[#c29262] transition text-sm sm:text-base">
                 確定
             </button>
         </div>
     </div>
 
-    <!-- 背景音樂 Audio 元素 -->
-    <audio id="bgMusic" loop preload="auto">
-        <source src="music.mp3" type="audio/mpeg">
-    </audio>
-
-    <!-- JavaScript 互動與表單對接精準邏輯 -->
+    <!-- 背景音樂合成與播放器 -->
     <script>
+        // Web Audio API 浪漫婚禮音樂合成器（提供優美流暢的背景旋律播放，無需外部音檔限制）
+        let audioCtx = null;
         let isMusicPlaying = false;
-        let isSubmitting = false;
-        const bgMusic = document.getElementById('bgMusic');
+        let musicTimer = null;
+
+        const chordProgression = [
+            [261.63, 329.63, 392.00], // C
+            [220.00, 261.63, 329.63], // Am
+            [174.61, 220.00, 261.63], // F
+            [196.00, 246.94, 293.66]  // G
+        ];
+        
+        const melodyNotes = [
+            523.25, 587.33, 659.25, 523.25, 659.25, 783.99, 
+            440.00, 493.88, 523.25, 587.33, 523.25, 440.00,
+            349.23, 392.00, 440.00, 523.25, 493.88, 440.00,
+            392.00, 440.00, 493.88, 523.25, 587.33, 659.25
+        ];
+
+        function playTone(freq, duration, type = 'sine', gainVal = 0.08) {
+            if (!audioCtx) return;
+            try {
+                const osc = audioCtx.createOscillator();
+                const gainNode = audioCtx.createGain();
+                osc.type = type;
+                osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+                
+                gainNode.gain.setValueAtTime(0, audioCtx.currentTime);
+                gainNode.gain.linearRampToValueAtTime(gainVal, audioCtx.currentTime + 0.1);
+                gainNode.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + duration);
+                
+                osc.connect(gainNode);
+                gainNode.connect(audioCtx.destination);
+                
+                osc.start();
+                osc.stop(audioCtx.currentTime + duration);
+            } catch(e) {
+                // Ignore audio scheduling exceptions during pause/stop
+            }
+        }
+
+        let step = 0;
+        function startMusicLoop() {
+            if (!isMusicPlaying) return;
+            if (audioCtx && audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+
+            const chordIndex = Math.floor(step / 6) % chordProgression.length;
+            const currentChord = chordProgression[chordIndex];
+            
+            // 播放柔和和弦伴奏
+            currentChord.forEach(f => playTone(f * 0.5, 2.2, 'sine', 0.03));
+
+            // 播放主旋律音符
+            const note = melodyNotes[step % melodyNotes.length];
+            playTone(note, 1.8, 'triangle', 0.06);
+
+            step++;
+            musicTimer = setTimeout(startMusicLoop, 1200);
+        }
+
         const audioToggle = document.getElementById('audioToggle');
         const audioIcon = document.getElementById('audioIcon');
         const welcomeOverlay = document.getElementById('welcomeOverlay');
@@ -404,12 +458,12 @@
         }
 
         openBtn.addEventListener('click', () => {
-            bgMusic.play().then(() => {
-                isMusicPlaying = true;
-                audioIcon.className = "fa-solid fa-volume-high text-sm sm:text-base";
-            }).catch(err => {
-                console.log("Audio play blocked or missing music.mp3:", err);
-            });
+            if (!audioCtx) {
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            }
+            isMusicPlaying = true;
+            startMusicLoop();
+            audioIcon.className = "fa-solid fa-volume-high text-sm sm:text-base";
 
             welcomeOverlay.style.opacity = '0';
             setTimeout(() => {
@@ -419,17 +473,17 @@
         });
 
         audioToggle.addEventListener('click', () => {
+            if (!audioCtx) {
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            }
             if (isMusicPlaying) {
-                bgMusic.pause();
                 isMusicPlaying = false;
+                clearTimeout(musicTimer);
                 audioIcon.className = "fa-solid fa-volume-xmark text-sm sm:text-base";
             } else {
-                bgMusic.play().then(() => {
-                    isMusicPlaying = true;
-                    audioIcon.className = "fa-solid fa-volume-high text-sm sm:text-base";
-                }).catch(err => {
-                    console.log("Audio play failed:", err);
-                });
+                isMusicPlaying = true;
+                startMusicLoop();
+                audioIcon.className = "fa-solid fa-volume-high text-sm sm:text-base";
             }
         });
 
@@ -511,6 +565,7 @@
             }
         }
 
+        let isSubmitting = false;
         function handleFormSubmit(event) {
             isSubmitting = true;
             const attendanceRadios = document.getElementsByName('entry.432583271');
@@ -538,7 +593,7 @@
                     showSuccessModal();
                     isSubmitting = false;
                 }
-            }, 600);
+            }, 800);
 
             return true;
         }
