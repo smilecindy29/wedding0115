@@ -139,7 +139,7 @@
         <p class="text-xs sm:text-sm text-[#4a4a4a]/80 mt-1">嘉義小原婚宴餐廳 1F 旗艦廳</p>
     </section>
 
-    <!-- 4. About Us 關於我們 -->
+    <!-- 4. About Us 關於我們 (手機版自然換行，避免三字成一句) -->
     <section id="about" class="py-12 sm:py-16 px-4 max-w-3xl mx-auto text-center">
         <div class="glass-card p-6 sm:p-10 md:p-12 rounded-3xl shadow-sm border border-[#d4a373]/15">
             <span class="text-xs uppercase tracking-widest-custom text-[#8da399] font-semibold block mb-1">About Us</span>
@@ -153,7 +153,7 @@
         </div>
     </section>
 
-    <!-- 5. 婚禮詳情 -->
+    <!-- 5. 婚禮詳情 (Details & Accordion) -->
     <section id="details" class="py-12 sm:py-16 px-4 max-w-5xl mx-auto">
         <div class="text-center mb-10">
             <span class="text-xs uppercase tracking-widest-custom text-[#8da399] font-semibold">Information</span>
@@ -199,7 +199,7 @@
             </div>
         </div>
 
-        <!-- 交通指引 摺疊式面板 -->
+        <!-- 交通指引 摺疊式面板 (Accordion) -->
         <div class="mt-6 glass-card rounded-3xl shadow-sm border border-[#d4a373]/15 overflow-hidden">
             <button onclick="toggleAccordion('trafficAccordion', 'trafficIcon')" class="w-full p-5 sm:p-6 text-left flex items-center justify-between focus:outline-none hover:bg-black/5 transition">
                 <div class="flex items-center space-x-3">
@@ -279,15 +279,15 @@
                         <input type="number" id="totalCount" name="entry.1415064295" min="0" max="10" value="1" oninput="handleCountChange()" class="w-full px-4 py-3 rounded-xl border border-[#d4a373]/30 bg-white/80 focus:outline-none focus:border-[#d4a373] transition text-sm sm:text-base">
                     </div>
 
-                    <!-- 飲食需求 (Dietary Requirements) -->
+                    <!-- 飲食需求 (Dietary Requirements) - 手機排版優化 -->
                     <div id="dietarySection" class="p-4 rounded-xl bg-white/40 border border-[#d4a373]/20 space-y-3">
                         <label class="block text-xs sm:text-sm font-semibold text-[#4a4a4a]">飲食需求 Dietary Requirements</label>
-                        <div class="grid grid-cols-2 gap-3 sm:gap-4">
-                            <div class="min-w-0">
+                        <div class="grid grid-cols-2 gap-2 sm:gap-4">
+                            <div>
                                 <label class="block text-[11px] sm:text-xs text-[#4a4a4a]/80 mb-1 truncate">葷食</label>
                                 <input type="number" id="meatCount" min="0" value="1" oninput="updateDietaryString()" class="w-full px-2 sm:px-3 py-2 rounded-lg border border-[#d4a373]/30 bg-white text-sm">
                             </div>
-                            <div class="min-w-0">
+                            <div>
                                 <label class="block text-[11px] sm:text-xs text-[#4a4a4a]/80 mb-1 truncate">素食</label>
                                 <input type="number" id="vegCount" min="0" value="0" oninput="updateDietaryString()" class="w-full px-2 sm:px-3 py-2 rounded-lg border border-[#d4a373]/30 bg-white text-sm">
                             </div>
@@ -353,70 +353,16 @@
         </div>
     </div>
 
-    <!-- 背景音樂合成與播放器 -->
+    <!-- 背景音樂 Audio 元素 (支援 mp3 播放) -->
+    <audio id="bgMusic" loop preload="auto">
+        <source src="music.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- JavaScript 互動與表單對接邏輯 -->
     <script>
-        // Web Audio API 浪漫婚禮音樂合成器（提供優美流暢的背景旋律播放，無需外部音檔限制）
-        let audioCtx = null;
         let isMusicPlaying = false;
-        let musicTimer = null;
-
-        const chordProgression = [
-            [261.63, 329.63, 392.00], // C
-            [220.00, 261.63, 329.63], // Am
-            [174.61, 220.00, 261.63], // F
-            [196.00, 246.94, 293.66]  // G
-        ];
-        
-        const melodyNotes = [
-            523.25, 587.33, 659.25, 523.25, 659.25, 783.99, 
-            440.00, 493.88, 523.25, 587.33, 523.25, 440.00,
-            349.23, 392.00, 440.00, 523.25, 493.88, 440.00,
-            392.00, 440.00, 493.88, 523.25, 587.33, 659.25
-        ];
-
-        function playTone(freq, duration, type = 'sine', gainVal = 0.08) {
-            if (!audioCtx) return;
-            try {
-                const osc = audioCtx.createOscillator();
-                const gainNode = audioCtx.createGain();
-                osc.type = type;
-                osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
-                
-                gainNode.gain.setValueAtTime(0, audioCtx.currentTime);
-                gainNode.gain.linearRampToValueAtTime(gainVal, audioCtx.currentTime + 0.1);
-                gainNode.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + duration);
-                
-                osc.connect(gainNode);
-                gainNode.connect(audioCtx.destination);
-                
-                osc.start();
-                osc.stop(audioCtx.currentTime + duration);
-            } catch(e) {
-                // Ignore audio scheduling exceptions during pause/stop
-            }
-        }
-
-        let step = 0;
-        function startMusicLoop() {
-            if (!isMusicPlaying) return;
-            if (audioCtx && audioCtx.state === 'suspended') {
-                audioCtx.resume();
-            }
-
-            const chordIndex = Math.floor(step / 6) % chordProgression.length;
-            const currentChord = chordProgression[chordIndex];
-            
-            // 播放柔和和弦伴奏
-            currentChord.forEach(f => playTone(f * 0.5, 2.2, 'sine', 0.03));
-
-            // 播放主旋律音符
-            const note = melodyNotes[step % melodyNotes.length];
-            playTone(note, 1.8, 'triangle', 0.06);
-
-            step++;
-            musicTimer = setTimeout(startMusicLoop, 1200);
-        }
-
+        let isSubmitting = false;
+        const bgMusic = document.getElementById('bgMusic');
         const audioToggle = document.getElementById('audioToggle');
         const audioIcon = document.getElementById('audioIcon');
         const welcomeOverlay = document.getElementById('welcomeOverlay');
@@ -458,12 +404,12 @@
         }
 
         openBtn.addEventListener('click', () => {
-            if (!audioCtx) {
-                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-            }
-            isMusicPlaying = true;
-            startMusicLoop();
-            audioIcon.className = "fa-solid fa-volume-high text-sm sm:text-base";
+            bgMusic.play().then(() => {
+                isMusicPlaying = true;
+                audioIcon.className = "fa-solid fa-volume-high text-sm sm:text-base";
+            }).catch(err => {
+                console.log("Audio play blocked or music.mp3 missing:", err);
+            });
 
             welcomeOverlay.style.opacity = '0';
             setTimeout(() => {
@@ -473,17 +419,17 @@
         });
 
         audioToggle.addEventListener('click', () => {
-            if (!audioCtx) {
-                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-            }
             if (isMusicPlaying) {
+                bgMusic.pause();
                 isMusicPlaying = false;
-                clearTimeout(musicTimer);
                 audioIcon.className = "fa-solid fa-volume-xmark text-sm sm:text-base";
             } else {
-                isMusicPlaying = true;
-                startMusicLoop();
-                audioIcon.className = "fa-solid fa-volume-high text-sm sm:text-base";
+                bgMusic.play().then(() => {
+                    isMusicPlaying = true;
+                    audioIcon.className = "fa-solid fa-volume-high text-sm sm:text-base";
+                }).catch(err => {
+                    console.log("Audio play failed:", err);
+                });
             }
         });
 
@@ -565,7 +511,6 @@
             }
         }
 
-        let isSubmitting = false;
         function handleFormSubmit(event) {
             isSubmitting = true;
             const attendanceRadios = document.getElementsByName('entry.432583271');
@@ -593,7 +538,7 @@
                     showSuccessModal();
                     isSubmitting = false;
                 }
-            }, 800);
+            }, 600);
 
             return true;
         }
