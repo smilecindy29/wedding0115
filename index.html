@@ -139,7 +139,7 @@
         <p class="text-xs sm:text-sm text-[#4a4a4a]/80 mt-1">嘉義小原婚宴餐廳 1F 旗艦廳</p>
     </section>
 
-    <!-- 4. About Us 關於我們 (手機版自然換行，避免三字成一句) -->
+    <!-- 4. About Us 關於我們 -->
     <section id="about" class="py-12 sm:py-16 px-4 max-w-3xl mx-auto text-center">
         <div class="glass-card p-6 sm:p-10 md:p-12 rounded-3xl shadow-sm border border-[#d4a373]/15">
             <span class="text-xs uppercase tracking-widest-custom text-[#8da399] font-semibold block mb-1">About Us</span>
@@ -283,11 +283,11 @@
                     <div id="dietarySection" class="p-4 rounded-xl bg-white/40 border border-[#d4a373]/20 space-y-3">
                         <label class="block text-xs sm:text-sm font-semibold text-[#4a4a4a]">飲食需求 Dietary Requirements</label>
                         <div class="grid grid-cols-2 gap-2 sm:gap-4">
-                            <div>
+                            <div class="min-w-0">
                                 <label class="block text-[11px] sm:text-xs text-[#4a4a4a]/80 mb-1 truncate">葷食</label>
                                 <input type="number" id="meatCount" min="0" value="1" oninput="updateDietaryString()" class="w-full px-2 sm:px-3 py-2 rounded-lg border border-[#d4a373]/30 bg-white text-sm">
                             </div>
-                            <div>
+                            <div class="min-w-0">
                                 <label class="block text-[11px] sm:text-xs text-[#4a4a4a]/80 mb-1 truncate">素食</label>
                                 <input type="number" id="vegCount" min="0" value="0" oninput="updateDietaryString()" class="w-full px-2 sm:px-3 py-2 rounded-lg border border-[#d4a373]/30 bg-white text-sm">
                             </div>
@@ -339,6 +339,12 @@
         <p>© 2027 宗翰 &amp; 育璇 Wedding Invitation. All Rights Reserved.</p>
     </footer>
 
+    <!-- 播放提示吐司提示 (Toast) -->
+    <div id="audioToast" class="fixed bottom-6 right-6 z-50 bg-[#4a4a4a] text-white px-4 py-3 rounded-2xl shadow-xl flex items-center space-x-3 transition-all duration-500 transform translate-y-20 opacity-0 pointer-events-none">
+        <i class="fa-solid fa-music text-[#d4a373]"></i>
+        <span id="audioToastText" class="text-xs sm:text-sm font-medium">背景音樂已播放 ♫</span>
+    </div>
+
     <!-- 成功送出 Modal 彈窗 -->
     <div id="successModal" class="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm hidden flex items-center justify-center p-4">
         <div class="bg-white max-w-sm w-full p-6 sm:p-8 rounded-3xl text-center shadow-2xl border border-[#d4a373]/30">
@@ -353,9 +359,10 @@
         </div>
     </div>
 
-    <!-- 背景音樂 Audio 元素 (支援 mp3 播放) -->
+    <!-- 背景音樂 Audio 元素 (使用 Music.mp3) -->
     <audio id="bgMusic" loop preload="auto">
-        <source src="music.mp3" type="audio/mpeg">
+        <source src="./Music.mp3" type="audio/mpeg">
+        <source src="Music.mp3" type="audio/mpeg">
     </audio>
 
     <!-- JavaScript 互動與表單對接邏輯 -->
@@ -367,10 +374,29 @@
         const audioIcon = document.getElementById('audioIcon');
         const welcomeOverlay = document.getElementById('welcomeOverlay');
         const openBtn = document.getElementById('openBtn');
+        const audioToast = document.getElementById('audioToast');
+        const audioToastText = document.getElementById('audioToastText');
 
         let currentSlideIndex = 0;
         const slides = document.querySelectorAll('.carousel-img');
         const dots = document.querySelectorAll('#carouselDots button');
+
+        function showAudioToast(message, isError = false) {
+            audioToastText.textContent = message;
+            if (isError) {
+                audioToast.classList.remove('bg-[#4a4a4a]');
+                audioToast.classList.add('bg-amber-800');
+            } else {
+                audioToast.classList.remove('bg-amber-800');
+                audioToast.classList.add('bg-[#4a4a4a]');
+            }
+            audioToast.classList.remove('translate-y-20', 'opacity-0');
+            audioToast.classList.add('translate-y-0', 'opacity-100');
+            setTimeout(() => {
+                audioToast.classList.remove('translate-y-0', 'opacity-100');
+                audioToast.classList.add('translate-y-20', 'opacity-0');
+            }, 3500);
+        }
 
         function showSlide(index) {
             slides.forEach((img, i) => {
@@ -404,11 +430,14 @@
         }
 
         openBtn.addEventListener('click', () => {
+            bgMusic.currentTime = 0;
             bgMusic.play().then(() => {
                 isMusicPlaying = true;
                 audioIcon.className = "fa-solid fa-volume-high text-sm sm:text-base";
+                showAudioToast("背景音樂已成功播放 ♫");
             }).catch(err => {
-                console.log("Audio play blocked or music.mp3 missing:", err);
+                console.log("Audio play blocked or Music.mp3 missing:", err);
+                showAudioToast("音樂載入中或需要手動點擊右上角播放", true);
             });
 
             welcomeOverlay.style.opacity = '0';
@@ -423,12 +452,15 @@
                 bgMusic.pause();
                 isMusicPlaying = false;
                 audioIcon.className = "fa-solid fa-volume-xmark text-sm sm:text-base";
+                showAudioToast("背景音樂已暫停");
             } else {
                 bgMusic.play().then(() => {
                     isMusicPlaying = true;
                     audioIcon.className = "fa-solid fa-volume-high text-sm sm:text-base";
+                    showAudioToast("背景音樂已播放 ♫");
                 }).catch(err => {
                     console.log("Audio play failed:", err);
+                    showAudioToast("無法播放音樂，請檢查 Music.mp3 檔案", true);
                 });
             }
         });
